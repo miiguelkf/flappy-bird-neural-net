@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    background: lightgray;
+    overflow: hidden;
+    text-align: center;
+}
+
+#gameScreen{
+    background: lightskyblue;
+    margin-top: 50px;
+}
