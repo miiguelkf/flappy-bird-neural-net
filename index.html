@@ -7,7 +7,11 @@
 </head>
 
 <body>
-    <h3>Flappy Game v1</h3>
+    <div class="slidercontainer">
+        <p>SPEED</p>
+        <input type="range" class="slider" min="30" max="300" value="60" step="10" id="FPSValue">
+    </div>
+    <button class="button kill" onclick="startNewGeneration()">Kill Birds</button>
     <canvas id="gameScreen"></canvas>
     <script src="src/contols.js"></script>
     <script src="src/pipe.js"></script>
