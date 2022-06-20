@@ -29,7 +29,7 @@ class Bird {
     }
 
     copy() {
-        return new Bird(this.x, this.width, this.height, this.brain);
+        return new Bird(this.x, this.width, this.height, this.brain)
     }
 
     #getClosestPipe(pipes) {
@@ -41,7 +41,7 @@ class Bird {
         let record = Infinity;
         for (let i = 0; i < pipes.length; i++) {
             let diff = (pipes[i].x + pipes[i].width) - this.x
-            if (diff > 0 && diff < record) {
+            if (diff >= 0 && diff < record) {
                 record = diff;
                 closest = pipes[i];
             }
