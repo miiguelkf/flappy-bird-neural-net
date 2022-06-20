@@ -29,6 +29,10 @@ class Pipe {
         return false
     }
 
+    offScreen(){
+        return (this.x + this.width < 0)
+    }
+
     update() {
         this.#move()
     }
