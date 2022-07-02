@@ -3,7 +3,7 @@ const ctx = canvas.getContext("2d")
 const slider = document.getElementById("FPSValue")
 
 canvasDimensions = {
-    width: 500,
+    width: 800,
     height: 512
 }
 canvas.width = canvasDimensions.width
@@ -55,8 +55,8 @@ function animate() {
             birds[i].update(pipes, canvasDimensions, baseDimensions)
             birds[i].think(pipes)
             if (birds[i].isDamaged) {
+                birds[i].fitness -= Math.abs((birds[i].getClosestPipe(pipes).top - birds[i].y))*10
                 aliveBirds--
-                console.log(birds[i].fitness)
             }
         }
     }
@@ -118,7 +118,7 @@ function generateFirstGeneration(birdQty) {
 }
 
 function drawBackground() {
-    for (var i = 0; i < 2; i++) {
+    for (var i = 0; i < 3; i++) {
         ctx.drawImage(
             backgroundImg,
             i * backgroundImg.width, 0
@@ -127,7 +127,7 @@ function drawBackground() {
 }
 
 function drawbase() {
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
         ctx.drawImage(
             baseImg,
             i * baseDimensions.width, canvasDimensions.height - baseDimensions.height,

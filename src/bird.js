@@ -15,16 +15,13 @@ class Bird {
         this.fitness = 0
         this.isDamaged = false
 
-        this.flySound = new Audio()
-        this.flySound.src = 'sounds/fly.mp3'
-
         this.controls = new Controls()
 
         if (brain) {
             this.brain = JSON.parse(JSON.stringify(brain))
         } 
         else {
-            this.brain = new NeuralNetwork([2, 2, 2])
+            this.brain = new NeuralNetwork([2, 3, 2])
         }
     }
 
@@ -32,7 +29,7 @@ class Bird {
         return new Bird(this.x, this.width, this.height, this.brain)
     }
 
-    #getClosestPipe(pipes) {
+    getClosestPipe(pipes) {
         if (pipes.length == 0) {
             return null
         }
@@ -56,7 +53,7 @@ class Bird {
         }
 
         // pipe collision
-        let pipe = this.#getClosestPipe(pipes)
+        let pipe = this.getClosestPipe(pipes)
         if (!pipe) {
             return false
         }
@@ -69,7 +66,7 @@ class Bird {
     }
 
     think(pipes) {
-        let pipe = this.#getClosestPipe(pipes)
+        let pipe = this.getClosestPipe(pipes)
         if (!pipe) {
             return false
         }
@@ -77,8 +74,6 @@ class Bird {
         let inputs = [];
         inputs[0] = this.y / canvasDimensions.height
         inputs[1] = pipe.top / canvasDimensions.height
-        // inputs[2] = (this.x + this.width / canvasDimensions.width
-        // inputs[3] = pipe.x / canvasDimensions.width
       
         const outputs = NeuralNetwork.feedForward(inputs, this.brain)
 

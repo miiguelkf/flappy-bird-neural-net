@@ -7,12 +7,12 @@
 </head>
 
 <body>
-    <div class="slidercontainer">
+    <canvas id="gameScreen"></canvas>
+    <div class="game-control">
         <p>SPEED</p>
         <input type="range" class="slider" min="30" max="300" value="60" step="10" id="FPSValue">
+        <button class="kill" onclick="startNewGeneration()">Kill Birds</button>
     </div>
-    <button class="button kill" onclick="startNewGeneration()">Kill Birds</button>
-    <canvas id="gameScreen"></canvas>
     <script src="src/contols.js"></script>
     <script src="src/pipe.js"></script>
     <script src="src/bird.js"></script>
